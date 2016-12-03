@@ -21,7 +21,7 @@ public class IntegerSorter {
     return sort(input, DEFAULT);
   }
 
-  private static int[] sort(int[] input, Strategy strategy) {
+  static int[] sort(int[] input, Strategy strategy) {
     switch (strategy) {
       default:
       case DEFAULT:
