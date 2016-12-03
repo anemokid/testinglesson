@@ -28,4 +28,15 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.0.1'
     // Our testing dependencies, these only get compiled when we run tests so they don't get added to the actual app
     testCompile 'junit:junit:4.12'
+
+    // AssertJ - for fluent assert APIs
+    testCompile 'org.assertj:assertj-core:2.6.0'
+
+    // Robolectric - Android Unit Testing framework
+    testCompile 'org.robolectric:robolectric:3.1.4'
+    // Required due to a bug
+    testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
+
+    // Mockito - Java mocking framework
+    testCompile 'org.mockito:mockito-core:2.2.28'
 }
