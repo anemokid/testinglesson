@@ -6,22 +6,35 @@ import static com.ekc.c4q.testinglesson.util.IntegerSorter.Strategy.DEFAULT;
 
 public class IntegerSorter {
 
+  Strategy strategy;
+
+  public IntegerSorter() {
+    this(null);
+  }
+
+  public IntegerSorter(Strategy strategy) {
+    this.strategy = strategy;
+    if (strategy == null) {
+      this.strategy = DEFAULT;
+    }
+  }
+
   /**
    * Return a sorted array of integers.
    *
    * @param input the unsorted input.
    * @return the sorted array.
    */
-  public static int[] sort(int[] input) {
+  public int[] sort(int[] input) {
     // Run test (IntegerSorterTest) and verify tests pass using Java's sort function
     // Remove/Comment out the sort method
     //        Arrays.sort(input);
 
     // Write your own sort algorithm and run the tests to verify your sort works
-    return sort(input, DEFAULT);
+    return sort(input, strategy);
   }
 
-  static int[] sort(int[] input, Strategy strategy) {
+  int[] sort(int[] input, Strategy strategy) {
     switch (strategy) {
       default:
       case DEFAULT:
@@ -43,7 +56,7 @@ public class IntegerSorter {
    * @param input the unsorted input.
    * @return the sorted array.
    */
-  private static int[] radixSort(int[] input) {
+  private int[] radixSort(int[] input) {
     int[] positiveInput;
     int[] negativeInput;
 
@@ -82,7 +95,7 @@ public class IntegerSorter {
     return output;
   }
 
-  private static int[] absValueRadixSort(int[] input) {
+  private int[] absValueRadixSort(int[] input) {
     int[] output;
     for (int digitsPlace = 1; digitsPlace <= 1_000_000_000; digitsPlace *= 10) {
 

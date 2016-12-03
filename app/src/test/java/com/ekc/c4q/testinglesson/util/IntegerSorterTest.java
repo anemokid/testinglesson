@@ -1,15 +1,23 @@
 package com.ekc.c4q.testinglesson.util;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class IntegerSorterTest {
 
+    private IntegerSorter sorter;
+
+    @Before
+    public void setUp() throws Exception {
+        sorter = new IntegerSorter();
+    }
+
     @Test
     public void sort_whenEmpty_shouldReturnEmptyArray() {
         int[] input = { };
-        int[] result = IntegerSorter.sort(input);
+        int[] result = sorter.sort(input);
         assertThat(result).isEmpty();
     }
 
@@ -17,7 +25,7 @@ public class IntegerSorterTest {
     public void sort_whenSmallValuesCloseTogether_shouldReturnSortedArray() {
         int[] input = {4, 3, 2, 1};
 
-        int[] result = IntegerSorter.sort(input);
+        int[] result = sorter.sort(input);
         assertThat(result).containsExactly(1, 2, 3, 4);
     }
 
@@ -25,7 +33,7 @@ public class IntegerSorterTest {
     public void sort_smallValuesWithRepeats_shouldReturnSortedArray() {
         int[] input = {2, 2, 4, 1, 3, 2, 1, 4};
 
-        int[] result = IntegerSorter.sort(input);
+        int[] result = sorter.sort(input);
         assertThat(result).containsExactly(1, 1, 2, 2, 2, 3, 4, 4);
     }
 
@@ -33,7 +41,7 @@ public class IntegerSorterTest {
     public void sort_smallNegativeValuesWithRepeats_shouldReturnSortedArray() {
         int[] input = {-2, -2, -4, -1, -3, -2, -1, -4};
 
-        int[] result = IntegerSorter.sort(input);
+        int[] result = sorter.sort(input);
         assertThat(result).containsExactly(-4, -4, -3, -2, -2, -2, -1, -1);
     }
 
@@ -41,7 +49,7 @@ public class IntegerSorterTest {
     public void sort_largeValuesCloseTogether_shouldReturnSortedArray() {
         int[] input = {40_000_000, 40_000_400, 40_000_440, 40_000_444};
 
-        int[] result = IntegerSorter.sort(input);
+        int[] result = sorter.sort(input);
         assertThat(result).containsExactly(40_000_000, 40_000_400, 40_000_440, 40_000_444);
     }
 
@@ -56,7 +64,7 @@ public class IntegerSorterTest {
                 40_000_400
         };
 
-        int[] result = IntegerSorter.sort(input);
+        int[] result = sorter.sort(input);
         assertThat(result).containsExactly(40_000_000,
                 40_000_400,
                 40_000_400,
@@ -77,7 +85,7 @@ public class IntegerSorterTest {
                 -40_000_444
         };
 
-        int[] result = IntegerSorter.sort(input);
+        int[] result = sorter.sort(input);
         assertThat(result).containsExactly(-40_000_444,
                 -40_000_444,
                 -40_000_440,
@@ -100,7 +108,7 @@ public class IntegerSorterTest {
                 0
         };
 
-        int[] result = IntegerSorter.sort(input);
+        int[] result = sorter.sort(input);
 
         assertThat(result)
                 .containsExactly(-70_000_000, -30, -30, 0, 0, 0, 4, 3_000_999, 40_000_000);
